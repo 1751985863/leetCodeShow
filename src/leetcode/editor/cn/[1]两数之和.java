@@ -30,12 +30,5 @@ class Solution {
         return nums;
     }
 
-    public static void main(String[] args) {
-        Solution solution=new Solution();
-        int[] ints = solution.twoSum(new int[]{1, 2, 3, 5}, 3);
-        for (int anInt : ints) {
-            System.out.println(anInt);
-        }
-    }
 }
 //leetcode submit region end(Prohibit modification and deletion)

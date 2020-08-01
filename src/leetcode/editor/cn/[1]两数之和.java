@@ -16,7 +16,7 @@ package leetcode.editor.cn;//给定一个整数数组 nums 和一个目标值 ta
 
 
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+class Solution1 {
     public int[] twoSum(int[] nums, int target) {
         for (int i = 0; i < nums.length; i++) {
             for (int j = i+1; j < nums.length; j++) {
@@ -29,6 +29,8 @@ class Solution {
         int[] ints = {-1};
         return nums;
     }
+
+
 
 }
 //leetcode submit region end(Prohibit modification and deletion)

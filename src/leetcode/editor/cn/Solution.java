@@ -19,6 +19,17 @@ class Solution {
         return maxLen;
     }
 
+    public ListNode reverseList(ListNode head) {
+        ListNode empty = null;
+        while (head != null) {
+            ListNode next = head.next;
+            head.next = empty;
+            empty = head;
+            head = next;
+        }
+        return empty;
+    }
+
     public static void main(String[] args) {
         int abba = lengthOfLongestSubstring("abba");
     }

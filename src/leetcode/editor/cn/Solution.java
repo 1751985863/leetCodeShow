@@ -1,6 +1,7 @@
 package leetcode.editor.cn;
 
 import java.util.HashMap;
+import java.util.PriorityQueue;
 
 class Solution {
     public static int lengthOfLongestSubstring(String s) {
@@ -28,6 +29,20 @@ class Solution {
             head = next;
         }
         return empty;
+    }
+
+    public int findKthLargest(int[] nums, int k) {
+        PriorityQueue<Integer> priorityQueue = new PriorityQueue<>(k);
+        for (int i = 0; i < k; i++) {
+            priorityQueue.offer(nums[i]);
+        }
+        for (int i = k; i < nums.length; i++) {
+            if (priorityQueue.peek() <= nums[i]) {
+                priorityQueue.poll();
+                priorityQueue.offer(nums[i]);
+            }
+        }
+        return priorityQueue.peek();
     }
 
     public static void main(String[] args) {

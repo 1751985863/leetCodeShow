@@ -1,5 +1,3 @@
-package cn;
-
 import java.util.LinkedHashMap;
 
 class LRUCache {

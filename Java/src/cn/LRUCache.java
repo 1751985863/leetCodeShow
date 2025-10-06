@@ -1,4 +1,4 @@
-package leetcode.editor.cn;
+package cn;
 
 import java.util.LinkedHashMap;
 

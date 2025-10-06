@@ -2,6 +2,39 @@ import java.util.HashMap;
 import java.util.PriorityQueue;
 
 class Solution {
+    public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+        ListNode head = new ListNode(-1);
+        ListNode t = head;
+        while (list1 != null && list2 != null) {
+            if (list1.val > list2.val) {
+                t.next = list2;
+                t = list2;
+                list2 = list2.next;
+            } else {
+                t.next = list1;
+                t = list1;
+                list1 = list1.next;
+            }
+        }
+        t.next = list1== null?list2:list1;
+        return head.next;
+    }
+
+    public static String longestPalindrome(String s) {
+        if (s == null || s.length() <= 1) return s;
+        String result = "";
+        for (int i = 0; i < s.length() - 1; i++) {
+            for (int j = i; j < s.length(); j++) {
+                String str = s.substring(i, j+1);
+                StringBuilder builder = new StringBuilder(str);
+                StringBuilder reverse = builder.reverse();
+                if (str.equals(reverse.toString()) && str.length() > result.length()) {
+                    result = str;
+                }
+            }
+        }
+        return result;
+    }
     public static int lengthOfLongestSubstring(String s) {
         int maxLen = 0;
         HashMap<Character,Integer>  map = new HashMap<>();
@@ -44,6 +77,8 @@ class Solution {
     }
 
     public static void main(String[] args) {
-        int abba = lengthOfLongestSubstring("abba");
+        String babad = longestPalindrome("bb");
+        System.out.println(babad);
+
     }
 }

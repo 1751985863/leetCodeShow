@@ -1,7 +1,28 @@
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.PriorityQueue;
 
 class Solution {
+
+    List<List<Integer>> resultList;
+
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        resultList = new ArrayList<>();
+        levelRun(root,1);
+        return resultList;
+    }
+
+    private void levelRun(TreeNode root, int level) {
+        if (root == null) return;
+        if (resultList.size() < level) {
+            resultList.add(new ArrayList<>());
+        }
+        resultList.get(level - 1).add(root.val);
+        levelRun(root.left,level+1);
+        levelRun(root.right,level+1);
+    }
+
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
         ListNode head = new ListNode(-1);
         ListNode t = head;

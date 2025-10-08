@@ -5,6 +5,30 @@ import java.util.PriorityQueue;
 
 class Solution {
 
+    public int[] twoSum(int[] nums, int target) {
+        HashMap<Integer, List<Integer>> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            if (!map.containsKey(nums[i])) {
+                List<Integer> list = new ArrayList<>();
+                map.put(nums[i],list);
+            }
+            map.get(nums[i]).add(i);
+        }
+        for (int i = 0; i < nums.length; i++) {
+            int result = target - nums[i];
+            if (map.containsKey(result)) {
+                if (nums[i] != result) {
+                    return new int[]{i,map.get(result).get(0)};
+                } else {
+                    if (map.get(result).size() >= 2) {
+                        return new int[]{map.get(result).get(0),map.get(result).get(1)};
+                    }
+                }
+            }
+        }
+        return new int[]{-1,-1};
+    }
+
     List<List<Integer>> resultList;
 
     public List<List<Integer>> levelOrder(TreeNode root) {

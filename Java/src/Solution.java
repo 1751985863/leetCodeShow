@@ -5,6 +5,39 @@ import java.util.PriorityQueue;
 
 class Solution {
 
+    static void main() {
+        char[][] grid = {
+                {'1', '1', '1'},
+                {'0', '1', '0'},
+                {'1', '1', '1'},
+        };
+        int nummed = numIslands(grid);
+        System.out.println(nummed);
+    }
+    public static int numIslands(char[][] grid) {
+        int sum = 0;
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[0].length; j++) {
+                if (grid[i][j] == '1') sum++;
+                cleanIslands(grid,i,j);
+            }
+        }
+        return sum;
+    }
+
+    private static void cleanIslands(char[][] grid, int i, int j) {
+        int r = grid.length;
+        int c = grid[0].length;
+        if (i >= r  || j >= c || i < 0 || j < 0) return;
+        if (grid[i][j] == '0') return;
+        // 右边走
+        grid[i][j] = '0';
+        cleanIslands(grid,i,j+1);
+        cleanIslands(grid,i+1,j);
+        cleanIslands(grid,i,j - 1);
+        cleanIslands(grid,i - 1,j);
+    }
+
     public int[] twoSum(int[] nums, int target) {
         HashMap<Integer, List<Integer>> map = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
@@ -121,9 +154,4 @@ class Solution {
         return priorityQueue.peek();
     }
 
-    public static void main(String[] args) {
-        String babad = longestPalindrome("bb");
-        System.out.println(babad);
-
-    }
 }

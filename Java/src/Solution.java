@@ -1,19 +1,37 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.PriorityQueue;
+import javax.crypto.spec.PSource;
+import java.util.*;
 
 class Solution {
 
     static void main() {
-        char[][] grid = {
-                {'1', '1', '1'},
-                {'0', '1', '0'},
-                {'1', '1', '1'},
-        };
-        int nummed = numIslands(grid);
-        System.out.println(nummed);
+        int[] nums1 = {1,2,3,0,0,0};
+        int[] nums2 = {2,5,6};
+        merge(nums1,3,nums2,3);
+        System.out.println(Arrays.toString(nums1));
     }
+
+    public static void merge(int[] nums1, int m, int[] nums2, int n) {
+        int p0 = m + n - 1;
+        int p1 = m - 1;
+        int p2 = n - 1;
+        while (p2 >= 0) {
+            if (p1 >= 0 && nums1[p1] > nums2[p2]) {
+                nums1[p0--] = nums1[p1--];
+            } else {
+                nums1[p0--] = nums2[p2--];
+            }
+        }
+    }
+
+    public List<List<Integer>> permute(int[] nums) {
+        List<List<Integer>> result = new ArrayList<>();
+        return null;
+    }
+
+    public int search(int[] nums, int target) {
+        return 1;
+    }
+
     public static int numIslands(char[][] grid) {
         int sum = 0;
         for (int i = 0; i < grid.length; i++) {
